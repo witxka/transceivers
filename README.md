@@ -1,3 +1,3 @@
-# lmsensors2
+# tecnair
 
-lmsensors plugin for check_mk 2
+tecnair conditioner plugin for check_mk 2

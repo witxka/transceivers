@@ -1,0 +1,3 @@
+hex,addr,type,desc_rus,unit,min,max,dec,method,multiply,warn,crit,name
+C7,200,16 bit signed,Температура возврата ,-,-3276.8,3276.7,1,R,0.1,20,25,temp_return
+C9,202,16 bit signed,Температура подачи	,-,-3276.8,3276.7,1,R,0.1,15,20,temp_supply

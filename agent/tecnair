@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "<<<tecnair>>>"
+tecnair.py tecnair_sensors.csv 192.168.124.98
