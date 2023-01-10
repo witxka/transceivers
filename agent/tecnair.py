@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Description  : Read tecnair conditioner sensors through modbus and ouput it as JSON.
