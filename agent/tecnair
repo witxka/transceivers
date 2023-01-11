@@ -2,4 +2,4 @@
 
 cd /usr/lib/check_mk_agent/tecnair
 echo "<<<tecnair>>>"
-./tecnair.py 192.168.124.98 tecnair_sensors.csv tecnair_hours.csv
+./tecnair.py 192.168.124.98 tecnair_sensors.csv tecnair_hours.csv tecnair_fans.csv
