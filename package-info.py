@@ -17,7 +17,7 @@
            'web': []},
  'name': 'tecnair',
  'title': 'tecnair conditioner plugin for check_mk 2',
- 'version': '1.1',
+ 'version': '2.0',
  'version.min_required': '2.0.0p1',
  'version.packaged': '2.0.0p5',
  'version.usable_until': None}

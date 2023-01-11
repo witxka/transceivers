@@ -13,6 +13,7 @@ class SensorType(enum.Enum):
     ENERGY = "energy"
     INTRUSION = "intrusion"
     HUMIDITY = "humidity"
+    HOURS = "hours"
 
 
 class Sensor:
@@ -161,6 +162,10 @@ def check_tecnair_temp(item, params, section):
     for r in check_tecnair(item, params, section, "levels", "levels_lower", "temperature"):
         yield r
 
+def check_tecnair_hours(item, params, section):
+    for r in check_tecnair(item, params, section, "levels", "levels_lower", "hours"):
+        yield r
+
 
 def check_tecnair_fan(item, params, section):
     for r in check_tecnair(item, params, section, "upper", "levels", "fan_speed"):
@@ -174,6 +179,11 @@ def check_tecnair_volt(item, params, section):
 
 def discover_tecnair_temp(section):
     for service in _discover_tecnair(section, SensorType.TEMP):
+        yield service
+
+
+def discover_tecnair_hours(section):
+    for service in _discover_tecnair(section, SensorType.HOURS):
         yield service
 
 
@@ -194,6 +204,16 @@ register.check_plugin(
     discovery_function=discover_tecnair_temp,
     check_function=check_tecnair_temp,
     check_ruleset_name="temperature",
+    check_default_parameters={},
+)
+
+register.check_plugin(
+    name="tecnair_hours",
+    service_name="tecnair_hours %s",
+    sections=["tecnair"],
+    discovery_function=discover_tecnair_hours,
+    check_function=check_tecnair_hours,
+    check_ruleset_name="hours",
     check_default_parameters={},
 )
 

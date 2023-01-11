@@ -1,0 +1,13 @@
+hex,addr,type,desc_rus,unit,min,max,dec,method,multiply,warn,crit,name
+1F3,500,32 bit unsigned (Low),Агрегат,ч,0,100000,0,R,1.0,100000,100000,hours_unit
+1F5,502,32 bit unsigned (Low),Компрессор 1,ч,0,100000,0,R,1.0,100000,100000,hours_compressor_1
+1F7,504,32 bit unsigned (Low),Запуск компрессора 1,ч,0,100000,0,R,1.0,100000,100000,hours_compressor_1_run
+1F9,506,32 bit unsigned (Low),Компрессор 2,ч,0,100000,0,R,1.0,100000,100000,hours_compressor_2
+1FB,508,32 bit unsigned (Low),Запуск компрессора 2,ч,0,100000,0,R,1.0,100000,100000,hours_compressor_2_run
+1FD,510,32 bit unsigned (Low),Клапан охлаждения ,ч,0,100000,0,R,1.0,100000,100000,hours_cooling_valve
+1FF,512,32 bit unsigned (Low),Обогрев ,ч,0,100000,0,R,1.0,100000,100000,hours_heating
+201,514,32 bit unsigned (Low),Увлажнитель ,ч,0,100000,0,R,1.0,100000,100000,hours_humidifier
+203,516,32 bit unsigned (Low),Естественное охлаждение ,ч,0,100000,0,R,1.0,100000,100000,hours_natural_cooling
+205,518,32 bit unsigned (Low),Сухой воздухоохладитель ,ч,0,100000,0,R,1.0,100000,100000,hours_dry_air_cooler
+207,520,32 bit unsigned (Low),Конденсатор 1 ,ч,0,100000,0,R,1.0,100000,100000,hours_condenser_1
+209,522,32 bit unsigned (Low),Конденсатор 2 ,ч,0,100000,0,R,1.0,100000,100000,hours_condenser_2
