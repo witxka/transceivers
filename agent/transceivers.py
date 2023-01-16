@@ -46,7 +46,7 @@ def get_info(sensors, scope, interface):
       sensorDict[sensor["name"] + "_crit"] = strToFloat(sensor["crit"])
     
 
-      info[sensor["sensor"]] = sensorDict
+      info[sensor["sensor"] + ", " + sensor["type"]] = sensorDict
 
     outputDict[interface] = info
     return outputDict
