@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd /usr/lib/check_mk_agent/transceivers
+echo "<<<transceivers>>>"
+./transceivers.py ens1f0 melanox_100Gbs.cvs

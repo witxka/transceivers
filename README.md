@@ -1,11 +1,8 @@
-# tecnair
+# transceivers
 
-tecnair conditioner plugin for check_mk 2 to monitor with
-modbus over tcp/ip.
+Optical transceivers plugin for check_mk 2 throught ethtool.
 
-Plugin consist of two parts:
-  * mrpe plugin setup for alaram sensors detection
-  * mkp plugin with agent setup for some tecnair parameters
+Plugin consist of:
+  * mkp plugin with agent setup for some melanox 100Gbs transceiver parameters
 
-All tecnair modbus sensors presented with csv files generated from
-available documentation.
+All optical transceiver parameters presented with csv files.

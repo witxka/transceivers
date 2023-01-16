@@ -39,7 +39,7 @@ def str_to_float(str_val):
         return None
 
 
-def parse_tecnair(string_table):
+def parse_transceivers(string_table):
     json_str = ""
     for line in string_table:
         for word in line:
@@ -82,7 +82,7 @@ def parse_tecnair(string_table):
     return parsed_sensors
 
 
-def _discover_tecnair(section, sensor_type):
+def _discover_transceivers(section, sensor_type):
     for chip in section:
         for sensor in chip.sensors:
             if sensor.sensor_type != sensor_type:
@@ -91,7 +91,7 @@ def _discover_tecnair(section, sensor_type):
             yield Service(item=service_name)
 
 
-def check_tecnair(item, params, section, levels_upper_key, levels_lower_key, metric_name):
+def check_transceivers(item, params, section, levels_upper_key, levels_lower_key, metric_name):
     for chip in section:
         for sensor in chip.sensors:
             service_name = chip.adapter + " " + sensor.name
@@ -133,15 +133,15 @@ def check_tecnair(item, params, section, levels_upper_key, levels_lower_key, met
                 return
 
 
-def check_tecnair_temp(item, params, section):
+def check_transceivers_temp(item, params, section):
     if "trend_compute" in params:
-        raise Exception("trend_compute is not supported by tecnair plugin")
+        raise Exception("trend_compute is not supported by transceivers plugin")
 
     if "device_levels_handling" in params:
-        raise Exception("device_levels_handling not supported, tecnair always uses sensor values of no rule is configured")
+        raise Exception("device_levels_handling not supported, transceivers always uses sensor values of no rule is configured")
 
     if "input_unit" in params:
-        raise Exception("input_unit is not supported by tecnair plugin")
+        raise Exception("input_unit is not supported by transceivers plugin")
 
     if "output_unit" in params:
         if params["output_unit"] == "c":
@@ -159,85 +159,85 @@ def check_tecnair_temp(item, params, section):
                         continue
                     sensor.value = sensor.value + 273.15
 
-    for r in check_tecnair(item, params, section, "levels", "levels_lower", "temperature"):
+    for r in check_transceivers(item, params, section, "levels", "levels_lower", "temperature"):
         yield r
 
-def check_tecnair_hours(item, params, section):
-    for r in check_tecnair(item, params, section, "levels", "levels_lower", "hours"):
-        yield r
-
-
-def check_tecnair_fan(item, params, section):
-    for r in check_tecnair(item, params, section, "upper", "levels", "fan_speed"):
+def check_transceivers_hours(item, params, section):
+    for r in check_transceivers(item, params, section, "levels", "levels_lower", "hours"):
         yield r
 
 
-def check_tecnair_volt(item, params, section):
-    for r in check_tecnair(item, params, section, "levels", "levels_lower", "volt"):
+def check_transceivers_fan(item, params, section):
+    for r in check_transceivers(item, params, section, "upper", "levels", "fan_speed"):
         yield r
 
 
-def discover_tecnair_temp(section):
-    for service in _discover_tecnair(section, SensorType.TEMP):
+def check_transceivers_volt(item, params, section):
+    for r in check_transceivers(item, params, section, "levels", "levels_lower", "volt"):
+        yield r
+
+
+def discover_transceivers_temp(section):
+    for service in _discover_transceivers(section, SensorType.TEMP):
         yield service
 
 
-def discover_tecnair_hours(section):
-    for service in _discover_tecnair(section, SensorType.HOURS):
+def discover_transceivers_hours(section):
+    for service in _discover_transceivers(section, SensorType.HOURS):
         yield service
 
 
-def discover_tecnair_fan(section):
-    for service in _discover_tecnair(section, SensorType.FAN):
+def discover_transceivers_fan(section):
+    for service in _discover_transceivers(section, SensorType.FAN):
         yield service
 
 
-def discover_tecnair_volt(section):
-    for service in _discover_tecnair(section, SensorType.IN):
+def discover_transceivers_volt(section):
+    for service in _discover_transceivers(section, SensorType.IN):
         yield service
 
 
 register.check_plugin(
-    name="tecnair_temp",
-    service_name="tecnair_temp %s",
-    sections=["tecnair"],
-    discovery_function=discover_tecnair_temp,
-    check_function=check_tecnair_temp,
+    name="transceivers_temp",
+    service_name="transceivers_temp %s",
+    sections=["transceivers"],
+    discovery_function=discover_transceivers_temp,
+    check_function=check_transceivers_temp,
     check_ruleset_name="temperature",
     check_default_parameters={},
 )
 
 register.check_plugin(
-    name="tecnair_hours",
-    service_name="tecnair_hours %s",
-    sections=["tecnair"],
-    discovery_function=discover_tecnair_hours,
-    check_function=check_tecnair_hours,
+    name="transceivers_hours",
+    service_name="transceivers_hours %s",
+    sections=["transceivers"],
+    discovery_function=discover_transceivers_hours,
+    check_function=check_transceivers_hours,
     check_ruleset_name="hours",
     check_default_parameters={},
 )
 
 register.check_plugin(
-    name="tecnair_fan",
-    service_name="tecnair_fan %s",
-    sections=["tecnair"],
-    discovery_function=discover_tecnair_fan,
-    check_function=check_tecnair_fan,
+    name="transceivers_fan",
+    service_name="transceivers_fan %s",
+    sections=["transceivers"],
+    discovery_function=discover_transceivers_fan,
+    check_function=check_transceivers_fan,
     check_ruleset_name="hw_fans",
     check_default_parameters={},
 )
 
 register.check_plugin(
-    name="tecnair_volt",
-    service_name="tecnair_volt %s",
-    sections=["tecnair"],
-    discovery_function=discover_tecnair_volt,
-    check_function=check_tecnair_volt,
+    name="transceivers_volt",
+    service_name="transceivers_volt %s",
+    sections=["transceivers"],
+    discovery_function=discover_transceivers_volt,
+    check_function=check_transceivers_volt,
     check_ruleset_name="voltage",
     check_default_parameters={},
 )
 
 register.agent_section(
-    name="tecnair",
-    parse_function=parse_tecnair,
+    name="transceivers",
+    parse_function=parse_transceivers,
 )
