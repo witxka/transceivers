@@ -173,7 +173,7 @@ def check_transceivers_fan(item, params, section):
 
 
 def check_transceivers_volt(item, params, section):
-    for r in check_transceivers(item, params, section, "levels", "levels_lower", "volt"):
+    for r in check_transceivers(item, params, section, "levels", "levels_lower", "parameter"):
         yield r
 
 
@@ -229,7 +229,7 @@ register.check_plugin(
 
 register.check_plugin(
     name="transceivers_volt",
-    service_name="transceivers_volt %s",
+    service_name="transceivers_params %s",
     sections=["transceivers"],
     discovery_function=discover_transceivers_volt,
     check_function=check_transceivers_volt,
