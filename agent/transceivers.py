@@ -31,7 +31,7 @@ def get_info(sensors, scope, interface):
 
     infoFor = {}
     info = {}
-    info["Adapter"] = scope
+    info["Adapter"] = interface + '_' + scope
     outputDict = {}
 
     for sensor in sensors:
