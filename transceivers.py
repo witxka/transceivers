@@ -238,7 +238,7 @@ register.check_plugin(
     sections=["transceivers"],
     discovery_function=discover_transceivers_parameter,
     check_function=check_transceivers_parameter,
-    check_ruleset_name="parameter",
+    check_ruleset_name="transceiver_parameter",
     check_default_parameters={},
 )
 
