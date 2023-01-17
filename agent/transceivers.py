@@ -44,6 +44,7 @@ def get_info(sensors, scope, interface):
       sensorDict[sensor["name"] + "_input"] = round(strToFloat(sensor_input),2)
       sensorDict[sensor["name"] + "_max"] = strToFloat(sensor["warn"])
       sensorDict[sensor["name"] + "_crit"] = strToFloat(sensor["crit"])
+      sensorDict[sensor["name"] + "_min"] = strToFloat(sensor["min"])
     
 
       info[sensor["sensor"] + ", " + sensor["type"]] = sensorDict

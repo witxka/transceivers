@@ -23,6 +23,7 @@ class Sensor:
         self.value = None
         self.crit_value = None
         self.warn_value = None
+        self.min_value = None
 
 
 class Chip:
@@ -75,6 +76,8 @@ def parse_transceivers(string_table):
                 if sensor_val_name.endswith("max"):
                     sensor.warn_value = str_to_float(sensors[chip_name][sensor_name][sensor_val_name])
 
+                if sensor_val_name.endswith("min"):
+                  sensor.min_value = str_to_float(sensors[chip_name][sensor_name][sensor_val_name])
             parsed.sensors.append(sensor)
 
         parsed_sensors.append(parsed)
@@ -114,6 +117,8 @@ def check_transceivers(item, params, section, levels_upper_key, levels_lower_key
                             sensor.warn_value = sensor.crit_value
 
                         levels_upper = (sensor.warn_value, sensor.crit_value)
+                        if sensor.min_value != None:
+                          levels_lower = (sensor.min_value, sensor.min_value)
                     elif sensor.warn_value == None and sensor.crit_value == None:
                         yield Result(state=State.OK, summary="Always Ok")
                         yield Metric(metric_name, sensor.value)
