@@ -10,3 +10,5 @@ Due to security permissions in check_mk docker installation rule definition must
 to the check_mk:
   * cp transceiver_parameter.py ~/lib/check_mk/gui/plugins/wato/check_parameters/
   * omd restart apache
+
+based on lmsensor2 plugin:  https://github.com/modusoft/lmsensors2
